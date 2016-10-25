@@ -78,7 +78,7 @@
 
     function resize(force) {
       var canvas = renderer.domElement;
-      var dpr = canvas.clientWidth > 1024 ? 0.2 : 0.4;
+      var dpr = canvas.clientWidth > 1024 ? 0.1 : 0.7;
       var width = canvas.clientWidth * dpr;
       var height = canvas.clientHeight * dpr;
       if (force || width != canvas.width || height != canvas.height) {
@@ -113,6 +113,7 @@
   }
 
   var hero = document.querySelector(".hero");
+  var h1 = document.querySelector("h1");
   function onScroll() {
     var rect = hero.getBoundingClientRect();
     var ratio;
@@ -124,6 +125,10 @@
     }
 
     hero.style.opacity = ratio;
+    console.log(ratio);
+    var color = Math.round(ratio * 255);
+    console.log("rgb(" + color + "," + color + "," + color +")");
+    h1.style.color = "rgb(" + color + "," + color + "," + color +")";
   }
 
   window.addEventListener('scroll', onScroll);

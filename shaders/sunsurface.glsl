@@ -132,7 +132,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
    // p: position on the ray
    // rd: direction of the ray
    vec3 rd = normalize(vec3((gl_FragCoord.xy-0.5*iResolution.xy)/iResolution.y, 1.));
-   vec3 ro = vec3(0., -3., -22.);
+   vec3 ro = vec3(10., -7., -30.);
    
    // ld, td: local, total density 
    // w: weighting factor

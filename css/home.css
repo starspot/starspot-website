@@ -43,6 +43,7 @@ p:first-of-type {
 }
 
 h1 {
+  position: fixed;
   margin: 0;
   padding-top: 10vh;
   font-size: 5.2vw;
