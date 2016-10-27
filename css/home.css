@@ -11,7 +11,7 @@ p {
 }
 
 p:first-of-type {
-  margin-top: -10vh;
+  margin-top: -100vh;
 }
 
 .hero {
@@ -36,27 +36,53 @@ p:first-of-type {
 .fade-in {
   opacity: 0;
   animation-name: fade-in;
-  animation-duration: 5s;
+  animation-duration: 6s;
   animation-timing-function: ease-in;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
 
+.fade-in.fast {
+  animation-duration: 2s
+}
+
 h1 {
   position: fixed;
+  top: 10vh;
   margin: 0;
-  padding-top: 10vh;
+  width: 100%;
   font-size: 5.2vw;
   letter-spacing: 1.3em;
-  animation-delay: 1.5s;
+  text-indent: 1.05em;
+  animation-delay: 0.5s;
   text-transform: uppercase;
 }
 
 h2 {
+  position: relative;
+  color: #aaa;
+  font-family: "Lato";
+  font-weight: 100;
   margin: 0;
+  top: 10vh;
+  padding-top: 6vh;
   font-size: 2.5vw;
-  animation-delay: 4s;
+  animation-delay: 3s;
 }
+
+@media (max-width: 425px) {
+  h1 {
+    font-size: 7vw;
+    letter-spacing: 1.0em;
+    text-indent: 0.8em;
+  }
+
+  h2 {
+    padding-top: 7vh;
+    font-size: 3.8vw;
+  }
+}
+
 
 canvas {
   position: absolute;
