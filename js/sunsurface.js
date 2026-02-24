@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 (function () {
   var loader = new THREE.TextureLoader();
   var noiseTex;
@@ -29,7 +31,7 @@
   }
 
   function run() {
-    var camera = new THREE.Camera();
+    var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     camera.position.z = 1;
 
     var scene = new THREE.Scene();
@@ -43,21 +45,21 @@
       1, -1,
       1, 1,
     ]);
-    geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 2));
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 2));
 
     var uniforms = {
-      iGlobalTime: { type: "f", value: 1.0 },
-      iResolution: { type: "v3", value: new THREE.Vector3() },
-      iChannel0: { type: "t", value: noiseTex },
-      iOpacity: { type: "f", value: 0 }
+      iGlobalTime: { value: 1.0 },
+      iResolution: { value: new THREE.Vector3() },
+      iChannel0: { value: noiseTex },
+      iOpacity: { value: 0 }
     };
 
     var material = new THREE.RawShaderMaterial({
       uniforms: uniforms,
       vertexShader: `
-      attribute vec4 position;
+      attribute vec2 position;
       void main()	{
-        gl_Position = position;
+        gl_Position = vec4(position, 0.0, 1.0);
       }`,
       fragmentShader: fragmentShader
     });
@@ -95,12 +97,6 @@
       lastTimeCalled = Date.now();
       fps = 1/delta;
       weightedFPS = ((weightedFPS * 5) + fps) / 6;
-
-      // if (weightedFPS < 50) {
-      //   dpr -= 0.05;
-      // } else if (weightedFPS > 55) {
-      //   dpr += 0.05;
-      // }
 
       resize(false);
       uniforms.iGlobalTime.value = time * 0.001;

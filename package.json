@@ -1,0 +1,8 @@
+{
+  "name": "starspot",
+  "version": "1.0.0",
+  "description": "Starspot - a node.js framework",
+  "dependencies": {
+    "three": "^0.183.0"
+  }
+}
